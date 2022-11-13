@@ -13,7 +13,7 @@ const commerce2022URL = "https://api.usaspending.gov/api/v2/financial_balances/a
 const interestURL = "https://data.nasdaq.com/api/v3/datasets/FRED/DTB3.csv?api_key=FkSVhPygAq9xm5moAXJq";
 
 
-const HomeScreen = ({route, navigation}) => {
+const HomeScreen = ({ route, navigation }) => {
 
     const { paramKey } = route.params;
     const [isLoading, setLoading] = useState(true);
@@ -43,7 +43,7 @@ const HomeScreen = ({route, navigation}) => {
             .then((response) => response.json()) // get response, convert to json
             .then((json) => {
                 setCommerce2022Amount(json.results[0].obligated_amount);
-                if(commerce2022Data - commerce2021Data > 0){
+                if (commerce2022Data - commerce2021Data > 0) {
                     setGovNum(75);
                 }
                 else
@@ -58,22 +58,22 @@ const HomeScreen = ({route, navigation}) => {
             .then((response) => response.text()) // get response, convert to text
             .then((json) => {
                 setInterestData(json);
-                
-                if(parseFloat(interestData.split(",")[2].split("\n")[0]) - parseFloat(interestData.split(",")[7].split("\n")[0]) < 0){
+
+                if (parseFloat(interestData.split(",")[2].split("\n")[0]) - parseFloat(interestData.split(",")[7].split("\n")[0]) < 0) {
                     setInterestNum(75);
                 }
                 else
                     setInterestNum(40);
-                
-                var incomeNumber = (paramKey / 100000.0)*100;
+
+                var incomeNumber = (paramKey / 100000.0) * 100;
                 setIncomeNum(incomeNumber);
-                setOverallNum((govNum+interestNum+incomeNumber)/3)
+                setOverallNum((govNum + interestNum + incomeNumber) / 3)
             })
             .catch((error) => alert(error)) // display errors
             .finally(() => setLoading(false)); // change loading state
     }, []);
 
-    
+
     return (
         <View style={{ height: "100%" }}>
             <View style={{ backgroundColor: '#0a0442', height: '100%', width: '100%' }}>
@@ -91,11 +91,11 @@ const HomeScreen = ({route, navigation}) => {
                     <View style={{ backgroundColor: "white", borderRadius: 20, marginTop: 40, height: "115%", width: "45%" }}>
                         <Text style={{ color: 'black', marginLeft: 20, marginTop: 1, fontSize: 20 }}>Gov Spending:</Text>
                         {commerce2022Data - commerce2021Data > 0 ? (
-                            <Text style={{marginLeft : 20}}>
+                            <Text style={{ marginLeft: 20 }}>
                                 +{formatMoney(commerce2022Data - commerce2021Data)} YTD
                             </Text>
                         ) : (
-                            <Text style={{marginLeft : 20}}>
+                            <Text style={{ marginLeft: 20 }}>
                                 -{formatMoney(commerce2022Data - commerce2021Data)} YTD
                             </Text>
                         )}
@@ -105,15 +105,15 @@ const HomeScreen = ({route, navigation}) => {
                     </View>
                     <View style={{ backgroundColor: "white", borderRadius: 20, marginTop: 40, marginLeft: 20, height: "115%", width: "45%" }}>
                         <Text style={{ color: 'black', marginLeft: 30, marginTop: 2, fontSize: 20 }}>Interest Rates:</Text>
-                        {parseFloat(interestData.split(",")[2].split("\n")[0]) - parseFloat(interestData.split(",")[7].split("\n")[0]) < 0? (
-                            <Text style={{marginLeft : 10}}>
-                                {Math.round((parseFloat(interestData.split(",")[2].split("\n")[0]) - parseFloat(interestData.split(",")[7].split("\n")[0]))*100)/100}% change this week
+                        {parseFloat(interestData.split(",")[2].split("\n")[0]) - parseFloat(interestData.split(",")[7].split("\n")[0]) < 0 ? (
+                            <Text style={{ marginLeft: 10 }}>
+                                {Math.round((parseFloat(interestData.split(",")[2].split("\n")[0]) - parseFloat(interestData.split(",")[7].split("\n")[0])) * 100) / 100}% change this week
                             </Text>
-                        ):(
-                            <Text style={{marginLeft : 10}}>
-                                +{Math.round((parseFloat(interestData.split(",")[2].split("\n")[0]) - parseFloat(interestData.split(",")[7].split("\n")[0]))*100)/100}% change this week
+                        ) : (
+                            <Text style={{ marginLeft: 10 }}>
+                                +{Math.round((parseFloat(interestData.split(",")[2].split("\n")[0]) - parseFloat(interestData.split(",")[7].split("\n")[0])) * 100) / 100}% change this week
                             </Text>
-                        )}  
+                        )}
                         <View style={{ marginTop: 10 }}>
                             <RNSpeedometer value={interestNum} size={100} />
                         </View>
@@ -143,7 +143,7 @@ const HomeScreen = ({route, navigation}) => {
                         style={{ marginTop: -29, marginLeft: 270 }}>
                         <AntDesign name={"exclamation"} size={30} color='white' />
                     </Pressable>
-                    <Pressable onPress={() => navigation.navigate("Projection", {paramKey: paramKey})}
+                    <Pressable onPress={() => navigation.navigate("Projection", { paramKey: paramKey })}
                         style={{ marginTop: -35, marginLeft: 350 }}>
                         <AntDesign name={"areachart"} size={30} color='white' />
                     </Pressable>
@@ -155,7 +155,7 @@ const HomeScreen = ({route, navigation}) => {
 };
 
 function formatMoney(x) {
-    return "$"+Math.abs(parseInt(x)).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+    return "$" + Math.abs(parseInt(x)).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
 }
 
 export default HomeScreen;
