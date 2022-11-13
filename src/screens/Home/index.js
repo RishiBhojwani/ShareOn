@@ -18,18 +18,21 @@ const HomeScreen = (props) => {
                         <AntDesign name={"login"} size={30} color='white' />
                     </Pressable>
                     <Pressable onPress={() => navigation.navigate("Recommendation")}
-                        style={{marginTop: -30, marginLeft: 120}}>
+                        style={{marginTop: -30, marginLeft: 100}}>
                         <AntDesign name={"bulb1"} size={30} color='white' />
                     </Pressable>
+                    <Pressable onPress={() => navigation.navigate("Home")}
+                        style={{marginTop: -35, marginLeft: 180}}>
+                        <AntDesign name={"home"} size={30} color='white' />
+                    </Pressable>
                     <Pressable onPress={() => navigation.navigate("Risk")}
-                        style={{marginTop: -29, marginLeft: 240}}>
+                        style={{marginTop: -29, marginLeft: 270}}>
                         <AntDesign name={"exclamation"} size={30} color='white' />
                     </Pressable>
-                <Pressable onPress={() => navigation.navigate("Projection")}
+                    <Pressable onPress={() => navigation.navigate("Projection")}
                         style={{marginTop: -35, marginLeft: 350}}>
                         <AntDesign name={"areachart"} size={30} color='white' />
                     </Pressable>
-
 
                 
                 </View>
