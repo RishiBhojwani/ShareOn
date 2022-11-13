@@ -12,7 +12,7 @@ const ProjectionScreen = (props) => {
     return (
         <View style={{ backgroundColor: '#0a0442', height: '100%', width: '100%'}}>
         <Pressable onPress={() => navigation.navigate("Sign Up")}
-                        style={{marginTop: 750, marginLeft: 20}}>
+                        style={{marginTop: 700, marginLeft: 20}}>
                         <AntDesign name={"login"} size={30} color='white' />
                     </Pressable>
                     <Pressable onPress={() => navigation.navigate("Recommendation")}
