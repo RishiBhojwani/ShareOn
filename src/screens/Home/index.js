@@ -65,7 +65,7 @@ const HomeScreen = ({ route, navigation }) => {
                 else
                     setInterestNum(40);
 
-                var incomeNumber = (paramKey / 100000.0) * 100;
+                var incomeNumber = (paramKey / 10000.0) * 100;
                 setIncomeNum(incomeNumber);
                 setOverallNum((govNum + interestNum + incomeNumber) / 3)
             })
