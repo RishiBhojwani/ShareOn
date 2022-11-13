@@ -143,7 +143,7 @@ const HomeScreen = ({route, navigation}) => {
                         style={{ marginTop: -29, marginLeft: 270 }}>
                         <AntDesign name={"exclamation"} size={30} color='white' />
                     </Pressable>
-                    <Pressable onPress={() => navigation.navigate("Projection")}
+                    <Pressable onPress={() => navigation.navigate("Projection", {paramKey: paramKey})}
                         style={{ marginTop: -35, marginLeft: 350 }}>
                         <AntDesign name={"areachart"} size={30} color='white' />
                     </Pressable>

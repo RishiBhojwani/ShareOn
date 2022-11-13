@@ -7,7 +7,6 @@ import { LineChart } from 'react-native-chart-kit'
 
 const snpVals = [4001.48, 4743.83, 3645.99, 3154.26, 2815.15, 2657.74]
 const users = require('../../../assets/data/users')
-const budget = users['default'][0]['income'];
 
 const data = {
 	labels: ["present", "1 year", "2 years", "3 years", "4 years", "5 years"],
@@ -30,11 +29,11 @@ const chartConfig = {
 	useShadowColorFromDataset: false // optional
 };
 
-const ProjectionScreen = (props) => {
-	const navigation = useNavigation();
+const ProjectionScreen = ({route, navigation}) => {
+	const { paramKey } = route.params;
 
 	for (let i = 0; i < snpVals.length; i++) {
-		data.datasets[0].data[i] = snpVals[0] - snpVals[i];
+		data.datasets[0].data[i] = paramKey * (1 + (snpVals[0] - snpVals[i]) / snpVals[0]);
 	}
 
 	function formatMoners(moners) {
@@ -54,19 +53,19 @@ const ProjectionScreen = (props) => {
 				/>
 			</View>
 			<Text style={{ color: 'white', fontSize: 20, fontFamily: font, margin: 20 }}>
-				If you invested {formatMoners(budget)} dollars 1 year ago, it would be {formatMoners(budget * snpVals[0] / snpVals[1])} dollars today.
+				If you invested {formatMoners(paramKey)} dollars 1 year ago, it would be {formatMoners(paramKey * snpVals[0] / snpVals[1])} dollars today.
 			</Text>
 			<Text style={{ color: 'white', fontSize: 20, fontFamily: font, margin: 20 }}>
-				If you invested {formatMoners(budget)} dollars 2 years ago, it would be {formatMoners(budget * snpVals[0] / snpVals[2])} dollars today.
+				If you invested {formatMoners(paramKey)} dollars 2 years ago, it would be {formatMoners(paramKey * snpVals[0] / snpVals[2])} dollars today.
 			</Text>
 			<Text style={{ color: 'white', fontSize: 20, fontFamily: font, margin: 20 }}>
-				If you invested {formatMoners(budget)} dollars 3 years ago, it would be {formatMoners(budget * snpVals[0] / snpVals[3])} dollars today.
+				If you invested {formatMoners(paramKey)} dollars 3 years ago, it would be {formatMoners(paramKey * snpVals[0] / snpVals[3])} dollars today.
 			</Text>
 			<Text style={{ color: 'white', fontSize: 20, fontFamily: font, margin: 20 }}>
-				If you invested {formatMoners(budget)} dollars 4 years ago, it would be {formatMoners(budget * snpVals[0] / snpVals[4])} dollars today.
+				If you invested {formatMoners(paramKey)} dollars 4 years ago, it would be {formatMoners(paramKey * snpVals[0] / snpVals[4])} dollars today.
 			</Text>
 			<Text style={{ color: 'white', fontSize: 20, fontFamily: font, margin: 20 }}>
-				If you invested {formatMoners(budget)} dollars 5 years ago, it would be {formatMoners(budget * snpVals[0] / snpVals[5])} dollars today.
+				If you invested {formatMoners(paramKey)} dollars 5 years ago, it would be {formatMoners(paramKey * snpVals[0] / snpVals[5])} dollars today.
 			</Text>
 			<Pressable onPress={() => navigation.navigate("Sign Up")}
 				style={{ marginTop: 30, marginLeft: 20 }}>
@@ -76,7 +75,7 @@ const ProjectionScreen = (props) => {
 				style={{ marginTop: -30, marginLeft: 100 }}>
 				<AntDesign name={"bulb1"} size={30} color='white' />
 			</Pressable>
-			<Pressable onPress={() => navigation.navigate("Home")}
+			<Pressable onPress={() => navigation.navigate("Home", {paramKey: paramKey})}
 				style={{ marginTop: -35, marginLeft: 180 }}>
 				<AntDesign name={"home"} size={30} color='white' />
 			</Pressable>
