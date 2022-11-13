@@ -9,6 +9,11 @@ const styles = StyleSheet.create({
         height: 65,
         alignItems: 'center',
         justifyContent: 'center',
+    },
+    chart: {
+        marginTop: 100,
+        borderRadius: 30,
+        alignItems: "center",
     }
 
 });
