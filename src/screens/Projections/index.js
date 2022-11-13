@@ -6,6 +6,8 @@ import ProjectionsChart from './ProjectionsChart';
 import { LineChart } from 'react-native-chart-kit'
 
 const snpVals = [4001.48, 4743.83, 3645.99, 3154.26, 2815.15, 2657.74]
+const users = require('../../../assets/data/users')
+const budget = users['default'][0]['income'];
 
 const data = {
 	labels: ["present", "1 year", "2 years", "3 years", "4 years", "5 years"],
@@ -15,8 +17,6 @@ const data = {
 		}
 	],
 };
-
-const budget = 1000
 
 const font = 'Roboto'
 
