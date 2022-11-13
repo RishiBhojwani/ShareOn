@@ -25,6 +25,7 @@ const SignUpScreen = (props) => {
                     placeholder="Amount to invest"
                     onChangeText={newText => setText(newText)}
                     placeholderTextColor="black"
+                    keyboardType="numeric"
 
                 />
             </View>

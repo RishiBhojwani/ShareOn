@@ -130,7 +130,7 @@ const HomeScreen = ({ route, navigation }) => {
                         style={{ marginTop: 20, marginLeft: 20 }}>
                         <AntDesign name={"login"} size={30} color='white' />
                     </Pressable>
-                    <Pressable onPress={() => navigation.navigate("Recommendation")}
+                    <Pressable onPress={() => navigation.navigate("Recommendation", { paramKey: paramKey, overallNum: overallNum })}
                         style={{ marginTop: -30, marginLeft: 100 }}>
                         <AntDesign name={"bulb1"} size={30} color='white' />
                     </Pressable>
