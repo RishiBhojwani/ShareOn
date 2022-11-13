@@ -79,10 +79,9 @@ const HomeScreen = ({ route, navigation }) => {
             <View style={{ backgroundColor: '#0a0442', height: '100%', width: '100%' }}>
 
 
-                <Text style={{ color: 'white', fontSize: 40, marginLeft: 50, marginTop: 30 }}>$</Text>
-                <Text style={{ color: 'white', marginLeft: 100, marginTop: -53, fontSize: 40 }}>{paramKey}</Text>
+                <Text style={{ color: 'white', marginLeft: 120, marginTop: 30, fontSize: 40 }}>${paramKey}</Text>
                 <View style={{ backgroundColor: "white", borderRadius: 20, }}>
-                    <Text style={{ marginLeft: 110, marginTop: 1, fontSize: 30, color: "black" }}>Overall Risk</Text>
+                    <Text style={{ marginLeft: 100, marginTop: 1, fontSize: 30, color: "black" }}>Risk Tolerance:</Text>
                     <View style={{ marginTop: 10, backgroundColor: "white", height: "23%" }}>
                         <RNSpeedometer value={overallNum} size={200} />
                     </View>
@@ -120,7 +119,7 @@ const HomeScreen = ({ route, navigation }) => {
                     </View>
                 </View>
                 <View style={{ backgroundColor: "white", borderRadius: 20, marginTop: 40, marginLeft: 80, height: "25%", width: "60%" }}>
-                    <Text style={{ color: 'black', marginLeft: 90, marginTop: 2, fontSize: 20 }}>Income:</Text>
+                    <Text style={{ color: 'black', marginLeft: 40, marginTop: 2, fontSize: 20 }}>Amount to Invest:</Text>
                     <View style={{ marginTop: 10, height: 135 }}>
                         <RNSpeedometer value={incomeNum} size={100} />
                     </View>
